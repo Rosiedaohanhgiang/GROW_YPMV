@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tiêu đề được cập nhật để phản ánh logic Huấn luyện -->
+    <title>Case Study: Huấn luyện trong Sản xuất tại Yamaha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS giữ nguyên */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .section-animate { animation: fadeIn 0.6s ease-in-out, slideUp 0.6s ease-in-out; }
+        .chat-bubble { max-width: 80%; width: fit-content; }
+        .chat-sent { margin-left: auto; background-color: #003366; color: white; }
+        .chat-received { background-color: #e5e7eb; color: #1f2937; }
+        .option-button { cursor: pointer; transition: all 0.2s ease-in-out; }
+        .option-button:hover:not(:disabled) { background-color: #f0f9ff; border-color: #38bdf8; }
+        .option-correct { background-color: #dcfce7 !important; border-color: #22c55e !important; }
+        .option-wrong { background-color: #fee2e2 !important; border-color: #f87171 !important; opacity: 0.7; }
+    </style>
+    <script>
+        // Cấu hình Tailwind giữ nguyên
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 'oswald': ['Oswald', 'sans-serif'] },
+                    colors: { 'opes-blue': '#003366', 'opes-gold': '#FFCC00' }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-100 font-oswald text-gray-800 flex flex-col items-center min-h-screen p-4">
+
+    <div class="w-full max-w-4xl mx-auto">
+        <!-- Thanh tiến trình -->
+        <div class="w-full bg-gray-200 rounded-full h-2.5 mb-4 shadow-inner">
+            <div id="progressBar" class="bg-gradient-to-r from-green-500 to-emerald-500 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+        </div>
+
+        <div id="case-study-container" class="bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col" style="max-height: calc(100vh - 80px);">
+            <main id="scrollable-content" class="flex-1 overflow-y-auto">
+                <!-- Section 1: Giới thiệu (ĐÃ THAY ĐỔI) -->
+                <section class="p-8 md:p-12 section-content">
+                    <h1 class="text-4xl md:text-5xl font-bold text-opes-blue mb-4">Case Study: Huấn luyện Sản xuất</h1>
+                    <h2 class="text-2xl text-gray-600 mb-6">"Từ Chỉ đạo đến Gợi mở"</h2>
+                    <div class="w-24 h-1 bg-opes-gold mb-8"></div>
+                    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                        Tại Yamaha Motor Vietnam, chất lượng đến từ con người. Khi một nhân viên có dấu hiệu sa sút, cách bạn phản ứng sẽ quyết định tất cả. Hãy vào vai một Trưởng ca Sản xuất và thực hành nghệ thuật huấn luyện (coaching) để giúp một công nhân vận hành tìm lại sự chủ động và trách nhiệm.
+                    </p>
+                    <button class="next-btn-section bg-gradient-to-r from-green-600 to-emerald-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:scale-105 transition-transform animate-pulse">Bắt đầu Huấn luyện</button>
+                </section>
+
+                <!-- Section 2: Vấn đề (ĐÃ THAY ĐỔI) -->
+                <section class="p-8 md:p-12 section-content hidden">
+                    <h2 class="text-3xl font-bold text-opes-blue mb-6">Tình huống: Công nhân bỏ qua quy trình</h2>
+                    <p class="text-lg mb-6">Nam là một công nhân vận hành máy hàn robot, bình thường rất cẩn thận. Nhưng sáng nay, anh ấy đã bỏ qua bước kiểm tra mỏ hàn đầu ca, dẫn đến xỉ hàn bám bẩn làm tắc luồng khí bảo vệ, gây ra một lô hàng lỗi.</p>
+                    <div class="bg-red-50 p-6 rounded-xl border border-red-200">
+                        <h3 class="text-xl font-semibold text-red-800 mb-3">Cách tiếp cận sai lầm ban đầu:</h3>
+                        <div class="space-y-3 mt-4">
+                           <div class="chat-bubble chat-sent p-3 rounded-xl shadow">
+                                <p class="font-bold">Trưởng ca (Bạn)</p>
+                                <p>Nam! Sao cậu lại để xỉ hàn bám bẩn thế kia? Cậu không kiểm tra đầu ca à? Phải làm cẩn thận chứ!</p>
+                           </div>
+                           <div class="chat-bubble chat-received p-3 rounded-xl shadow">
+                                <p class="font-bold">Nam (Công nhân)</p>
+                                <p>Dạ... vâng, em xin lỗi. Em sơ suất quá.</p>
+                           </div>
+                        </div>
+                        <p class="mt-4 text-center text-red-700 font-semibold">Kết quả: Nam cảm thấy tội lỗi nhưng không có động lực. Bạn nhận ra mình cần một cách tiếp cận khác để giải quyết gốc rễ vấn đề.</p>
+                    </div>
+                </section>
+                
+                <!-- Section 3: G - Goal (Mục tiêu) (ĐÃ THAY ĐỔI) -->
+                <section class="p-8 md:p-12 section-content hidden grow-step">
+                    <h2 class="text-3xl font-bold text-opes-blue mb-2">G - Goal (Mục tiêu)</h2>
+                    <p class="text-lg mb-6 text-gray-600">Bạn gọi Nam ra nói chuyện riêng. Mục đích là để Nam tự xác định điều cậu ấy muốn đạt được.</p>
+                    <div class="chat-bubble chat-received p-3 rounded-xl shadow mb-6">
+                       <p class="font-bold">Nam</p>
+                       <p>Em xin lỗi anh về sự cố vừa rồi... Dạo này em cũng thấy mình làm việc không tập trung lắm.</p>
+                    </div>
+                    <h3 class="font-semibold text-xl mb-4">Bạn (Trưởng ca) sẽ hỏi câu nào tiếp theo?</h3>
+                    <div class="space-y-3 option-group">
+                        <button class="option-button w-full text-left p-4 border-2 rounded-lg" data-correct="false">Tại sao em lại lơ là như vậy? Em có biết thiệt hại cho công ty không?</button>
+                        <button class="option-button w-full text-left p-4 border-2 rounded-lg" data-correct="true">Cảm ơn em đã thẳng thắn. Vậy, khi kết thúc buổi nói chuyện này, em muốn chúng ta làm rõ được điều gì?</button>
+                        <button class="option-button w-full text-left p-4 border-2 rounded-lg" data-correct="false">Em phải cam kết không để lỗi này xảy ra nữa, đúng không?</button>
+                    </div>
+                    <p class="feedback-text mt-4 text-sm"></p>
+                </section>
+
+                <!-- Section 4: R - Reality (Thực tế) (ĐÃ THAY ĐỔI) -->
+                <section class="p-8 md:p-12 section-content hidden grow-step">
+                    <h2 class="text-3xl font-bold text-opes-blue mb-2">R - Reality (Thực tế)</h2>
+                    <p class="text-lg mb-6 text-gray-600">Mục đích là giúp Nam tự nhận thức về tình hình hiện tại.</p>
+                    <div class="chat-bubble chat-received p-3 rounded-xl shadow mb-6">
+                       <p class="font-bold">Nam</p>
+                       <p>Em muốn tìm lại cách làm việc cẩn thận như trước. Em không muốn là nguyên nhân gây ra lỗi nữa.</p>
+                    </div>
+                    <h3 class="font-semibold text-xl mb-4">Bạn sẽ hỏi câu nào để khám phá thực tế?</h3>
+                    <div class="space-y-3 option-group">
+                        <button class="option-button w-full text-left p-4 border-2 rounded-lg" data-correct="true">Em có thể mô tả lại cho anh chính xác những gì đã diễn ra sáng nay không? Điều gì đang cản trở em duy trì sự tập trung?</button>
+                        <button class="option-button w-full text-left p-4 border-2 rounded-lg" data-correct="false">Em thấy mệt mỏi à? Hay là có chuyện gia đình?</button>
+                        <button class="option-button w-full text-left p-4 border-2 rounded-lg" data-correct="false">Em có thấy quy trình kiểm tra đầu ca là không cần thiết không?</button>
+                    </div>
+                    <p class="feedback-text mt-4 text-sm"></p>
+                </section>
+
+                <!-- Section 5: O - Options (Lựa chọn) (ĐÃ THAY ĐỔI) -->
+                <section class="p-8 md:p-12 section-content hidden grow-step">
+                    <h2 class="text-3xl font-bold text-opes-blue mb-2">O - Options (Lựa chọn)</h2>
+                    <p class="text-lg mb-6 text-gray-600">Mục đích là khuyến khích Nam tự suy nghĩ về các giải pháp.</p>
+                    <div class="chat-bubble chat-received p-3 rounded-xl shadow mb-6">
+                       <p class="font-bold">Nam</p>
+                       <p>Thực sự là em thấy hơi oải vì công việc lặp đi lặp lại. Em đã vận hành máy này 2 năm rồi. Sáng nay em nghĩ 'chắc không sao đâu' nên đã bỏ qua bước đó cho nhanh...</p>
+                    </div>
+                    <h3 class="font-semibold text-xl mb-4">Bạn sẽ nói gì để gợi mở các lựa chọn?</h3>
+                    <div class="space-y-3 option-group">
+                        <button class="option-button w-full text-left p-4 border-2 rounded-lg" data-correct="false">Vậy từ mai em cứ kiểm tra kỹ là được. Quy trình là quy trình.</button>
+                        <button class="option-button w-full text-left p-4 border-2 rounded-lg" data-correct="true">Anh hiểu cảm giác đó. Ngoài việc 'cố gắng tập trung hơn', em nghĩ có những cách cụ thể nào để em tìm lại sự hứng thú hoặc đảm bảo các bước an toàn không bị bỏ sót?</button>
+                        <button class="option-button w-full text-left p-4 border-2 rounded-lg" data-correct="false">Hay là anh đề xuất cho em nghỉ phép vài hôm? Hoặc luân chuyển em qua bộ phận khác?</button>
+                    </div>
+                    <p class="feedback-text mt-4 text-sm"></p>
+                </section>
+                
+                <!-- Section 6: W - Will (Hành động) (ĐÃ THAY ĐỔI) -->
+                <section class="p-8 md:p-12 section-content hidden grow-step">
+                    <h2 class="text-3xl font-bold text-opes-blue mb-2">W - Will (Ý chí/Hành động)</h2>
+                    <p class="text-lg mb-6 text-gray-600">Mục đích là giúp Nam cam kết với một kế hoạch hành động cụ thể.</p>
+                    <div class="chat-bubble chat-received p-3 rounded-xl shadow mb-6">
+                       <p class="font-bold">Nam</p>
+                       <p>Em nghĩ... có lẽ em cần một cái 'checklist' kiểm tra đầu ca dán ngay trên máy. Và có thể... em muốn tìm hiểu thêm về cách bảo trì máy robot sâu hơn, chứ không chỉ là vận hành.</p>
+                    </div>
+                    <h3 class="font-semibold text-xl mb-4">Bạn sẽ nói gì để chốt lại kế hoạch?</h3>
+                    <div class="space-y-3 option-group">
+                        <button class="option-button w-full text-left p-4 border-2 rounded-lg" data-correct="true">Ý tưởng rất hay! Vậy, hành động cụ thể đầu tiên em sẽ làm ngay trong tuần này là gì? Anh có thể hỗ trợ em như thế nào, ví dụ như kết nối với bên bảo trì?</button>
+                        <button class="option-button w-full text-left p-4 border-2 rounded-lg" data-correct="false">Ok, vậy em cứ làm checklist đi nhé. Nhớ làm cho tốt.</button>
+                        <button class="option-button w-full text-left p-4 border-2 rounded-lg" data-correct="false">Em chắc là em muốn làm thêm việc bảo trì không? Sẽ vất vả hơn đó.</button>
+                    </div>
+                    <p class="feedback-text mt-4 text-sm"></p>
+                </section>
+
+                <!-- Section 7: Kết quả & Bài học (ĐÃ THAY ĐỔI) -->
+                <section class="p-8 md:p-12 section-content hidden">
+                    <h2 class="text-3xl font-bold text-opes-blue mb-6">Kết quả: Trao quyền và Trách nhiệm</h2>
+                    <p class="text-lg mb-6">Kết thúc buổi nói chuyện, Nam cảm thấy được lắng nghe và thấu hiểu. Anh ấy tự tạo checklist kiểm tra đầu ca và chủ động đề xuất học thêm về bảo trì. Sự chủ động và tinh thần trách nhiệm của anh ấy tăng lên rõ rệt.</p>
+                    <div class="space-y-6 text-lg mt-8">
+                       <div class="bg-gray-100 p-6 rounded-lg">
+                            <h3 class="font-bold text-xl mb-2 text-opes-blue">1. Huấn luyện là gợi mở, không phải ra lệnh</h3>
+                            <p>Bằng cách đặt câu hỏi, bạn giúp nhân viên tự tư duy và tìm ra câu trả lời. Giải pháp do họ tự nghĩ ra sẽ có tính cam kết cao hơn nhiều.</p>
+                       </div>
+                       <div class="bg-gray-100 p-6 rounded-lg">
+                           <h3 class="font-bold text-xl mb-2 text-opes-blue">2. Giải quyết gốc rễ của con người (Sự nhàm chán)</h3>
+                           <p>Vấn đề không chỉ là "bỏ qua quy trình", mà là "mất động lực". Bằng cách huấn luyện, bạn giúp Nam tìm thấy hướng phát triển mới (học bảo trì) ngay trong công việc của mình.</p>
+                       </div>
+                    </div>
+                    <button onclick="window.location.reload()" class="mt-8 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:scale-105 transition-transform">Thực hành lại</button>
+                </section>
+            </main>
+            
+            <!-- Phần điều hướng giữ nguyên -->
+            <div class="flex justify-between p-6 bg-white bg-opacity-70 backdrop-blur-sm border-t">
+                <button id="backBtn" class="back-btn bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-lg hover:bg-gray-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">Quay lại</button>
+                <button id="nextBtn" class="next-btn bg-opes-blue text-white font-bold py-2 px-6 rounded-lg hover:bg-opacity-90 transition-colors">Tiếp theo</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // Toàn bộ JavaScript giữ nguyên
+    const sections = document.querySelectorAll('.section-content');
+    const progressBar = document.getElementById('progressBar');
+    const backBtn = document.getElementById('backBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const scrollableContent = document.getElementById('scrollable-content');
+    
+    let currentSectionIndex = 0;
+    const totalSections = sections.length;
+
+    function updateUI() {
+        sections.forEach((section, index) => {
+            section.classList.toggle('hidden', index !== currentSectionIndex);
+            if (index === currentSectionIndex) {
+                section.classList.add('section-animate');
+            }
+        });
+        scrollableContent.scrollTop = 0;
+
+        const progressPercentage = ((currentSectionIndex + 1) / totalSections) * 100;
+        progressBar.style.width = `${progressPercentage}%`;
+
+        backBtn.disabled = currentSectionIndex === 0;
+        nextBtn.classList.toggle('hidden', currentSectionIndex >= totalSections - 1);
+        
+        const currentStep = sections[currentSectionIndex];
+        if (currentStep.classList.contains('grow-step')) {
+            nextBtn.style.visibility = 'hidden';
+        } else {
+             nextBtn.style.visibility = 'visible';
+        }
+    }
+    
+    function goToNext() {
+        if (currentSectionIndex < totalSections - 1) {
+            currentSectionIndex++;
+            updateUI();
+        }
+    }
+
+    function goToBack() {
+        if (currentSectionIndex > 0) {
+            currentSectionIndex--;
+            updateUI();
+        }
+    }
+
+    nextBtn.addEventListener('click', goToNext);
+    backBtn.addEventListener('click', goToBack);
+    document.querySelector('.next-btn-section').addEventListener('click', goToNext);
+
+    // Xử lý tương tác lựa chọn (Phản hồi đã được cập nhật)
+    const optionGroups = document.querySelectorAll('.option-group');
+    optionGroups.forEach(group => {
+        const buttons = group.querySelectorAll('.option-button');
+        const feedbackText = group.nextElementSibling;
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const isCorrect = button.dataset.correct === 'true';
+                
+                buttons.forEach(btn => {
+                    btn.disabled = true;
+                    if (btn.dataset.correct !== 'true') {
+                        btn.classList.add('option-wrong');
+                    }
+                });
+
+                if (isCorrect) {
+                    button.classList.add('option-correct');
+                    // Phản hồi mới cho logic coaching
+                    feedbackText.textContent = "Chính xác! Đây là một câu hỏi mở, mang tính xây dựng và gợi mở tư duy của nhân viên.";
+                    feedbackText.classList.add('text-green-600');
+                    setTimeout(() => goToNext(), 2000);
+                } else {
+                    button.classList.add('option-wrong');
+                    const correctButton = group.querySelector('[data-correct="true"]');
+                    correctButton.classList.add('option-correct');
+                    // Phản hồi mới cho logic coaching
+                    feedbackText.textContent = "Chưa phải là câu hỏi tốt nhất. Câu hỏi này có tính phán xét, áp đặt hoặc suy diễn, không khuyến khích nhân viên tự suy nghĩ.";
+                    feedbackText.classList.add('text-red-600');
+                    setTimeout(() => goToNext(), 4000);
+                }
+            });
+        });
+    });
+
+    updateUI();
+</script>
+</body>
+</html>
